@@ -1,0 +1,335 @@
+:root {
+    --main: #1d4ed8;     /* biru utama */
+    --bg-soft: #dbeafe;  /* biru lembut */
+    --bg: #ffffff;
+    --text: #111827;
+    --panel-border: #1e40af;
+    --surface: #ffffff;
+    --muted: #475569;
+}
+
+body {
+    font-family: 'Fira Code', monospace;
+    color: var(--text);
+    background: var(--bg);
+    font-weight: 700 !important;
+}
+
+body * {
+    font-weight: 700 !important;
+}
+
+.panel {
+    border: 1px solid var(--panel-border);
+    background: var(--surface);
+}
+
+/* BOX */
+.box {
+    border: 1px solid var(--main);
+    padding: 10px;
+    font-size: 12px;
+    background: var(--surface);
+}
+
+.box h2 {
+    margin-bottom: 6px;
+    color: var(--main);
+}
+
+.box h3 {
+    color: var(--main);
+}
+
+/* BUTTON */
+.btn {
+    border: 1px solid var(--main);
+    padding: 7px 10px;
+    color: var(--main);
+    background: var(--surface);
+    transition: 0.2s ease;
+}
+
+.btn:hover {
+    background: #ff0000;
+    color: #ffffff;
+}
+
+.btn-red {
+    border: 1px solid red;
+    padding: 7px 10px;
+    color: #ef4444;
+    background: var(--surface);
+    transition: 0.2s ease;
+}
+
+.btn-red:hover {
+    background: red;
+    color: #0b1220;
+}
+
+.btn:disabled,
+.btn-red:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+.status-pill {
+    display: flex;
+    align-items: center;
+    border: 1px solid var(--panel-border);
+    border-radius: 4px;
+    padding: 0 10px;
+    min-height: 36px;
+    background: var(--bg-soft);
+}
+
+.status-idle {
+    color: var(--muted);
+}
+
+.status-running {
+    color: #f59e0b;
+}
+
+.status-success {
+    color: #22c55e;
+}
+
+.status-error {
+    color: #ef4444;
+}
+
+/* TERMINAL */
+#terminal div {
+    margin-bottom: 4px;
+    animation: fade 0.2s ease-in;
+}
+
+@keyframes fade {
+    from { opacity: 0 }
+    to { opacity: 1 }
+}
+
+/* PROGRESS */
+#progress {
+    background: var(--main);
+}
+
+/* Ikuti tema browser/OS (Chrome) */
+@media (prefers-color-scheme: dark) {
+    :root {
+        --main: #60a5fa;
+        --bg-soft: #1e293b;
+        --bg: #0b1220;
+        --text: #e2e8f0;
+        --panel-border: #334155;
+        --surface: #111827;
+        --muted: #94a3b8;
+    }
+}
+
+/* MAP */
+#map {
+    background: url('petadunia.jpg') center/cover no-repeat;
+}
+
+.dot {
+    width: 5px;
+    height: 5px;
+    background: var(--main);
+    position: absolute;
+    border-radius: 50%;
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0% {opacity:1}
+    50% {opacity:0.3}
+    100% {opacity:1}
+}
+
+/* —— DETECTION BANKING: backdrop + kartu seperti app trading —— */
+
+.panel.banking-panel-shell {
+    border: none;
+}
+
+.banking-panel-shell {
+    box-shadow:
+        0 8px 32px rgba(15, 23, 42, 0.12),
+        0 0 0 1px rgba(37, 99, 235, 0.15);
+    border-radius: 12px;
+    overflow: hidden;
+    background: var(--surface);
+}
+
+.banking-panel-title {
+    font-family: "DM Sans", system-ui, sans-serif;
+    margin: 0;
+    letter-spacing: 0.06em;
+    font-weight: 700;
+    background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 45%, #1e40af 100%);
+}
+
+.bank-card {
+    font-family: "DM Sans", system-ui, sans-serif;
+}
+
+.banking-hero-bg {
+    position: relative;
+    isolation: isolate;
+    min-height: 12rem;
+    background-color: #64748b;
+    background-image:
+        linear-gradient(145deg, rgba(37, 99, 235, 0.82) 0%, rgba(15, 23, 42, 0.75) 55%, rgba(15, 23, 42, 0.88) 100%),
+        url("assets/bank-panel-bg.png");
+    background-size: auto, cover;
+    background-position: center, center top;
+    background-repeat: no-repeat, no-repeat;
+}
+
+/* Jika tidak ada file gambar, lapisan gradient tetup menyerupai app */
+.banking-hero-bg::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    pointer-events: none;
+    opacity: 0.35;
+    background: radial-gradient(ellipse 120% 80% at 20% -10%, rgba(255, 255, 255, 0.45), transparent 50%),
+                radial-gradient(ellipse 90% 60% at 100% 80%, rgba(59, 130, 246, 0.35), transparent 55%);
+}
+
+.banking-cards {
+    position: relative;
+    z-index: 1;
+}
+
+.bank-card {
+    border-radius: 14px;
+    padding: 14px 16px;
+    font-size: 12px;
+    font-weight: 600;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.18);
+}
+
+.bank-card-muted {
+    background: rgba(255, 255, 255, 0.88);
+    color: #0f172a;
+    border: 1px solid rgba(255, 255, 255, 0.6);
+}
+
+.bank-card-primary {
+    background: linear-gradient(160deg, #3b82f6 0%, #2563eb 42%, #1d4ed8 100%);
+    color: #f8fafc;
+    border: 1px solid rgba(147, 197, 253, 0.45);
+}
+
+.bank-card-primary .bank-dl dt {
+    color: rgba(241, 245, 249, 0.75);
+}
+
+.bank-card-muted .bank-dl dt {
+    color: var(--muted);
+}
+
+.bank-card-label {
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    margin: 0 0 12px;
+    opacity: 0.95;
+}
+
+.bank-badge {
+    display: inline-block;
+    margin-left: 6px;
+    padding: 2px 8px;
+    border-radius: 999px;
+    font-size: 10px;
+    vertical-align: middle;
+    background: rgba(239, 68, 68, 0.95);
+    color: #fff;
+}
+
+.bank-card-primary .bank-badge {
+    background: rgba(251, 191, 36, 0.95);
+    color: #451a03;
+}
+
+.bank-dl {
+    margin: 0;
+    display: grid;
+    gap: 8px;
+}
+
+.bank-dl > div {
+    display: grid;
+    grid-template-columns: 7rem 1fr;
+    gap: 8px;
+    align-items: baseline;
+    min-width: 0;
+}
+
+.bank-dl dt {
+    margin: 0;
+    font-size: 11px;
+    font-weight: 600;
+}
+
+.bank-dl dd {
+    margin: 0;
+    font-size: 12px;
+    font-weight: 700;
+    min-width: 0;
+    overflow-wrap: anywhere;
+    word-break: break-word;
+}
+
+.bank-balance-row dd {
+    font-size: 1.125rem;
+    letter-spacing: 0.02em;
+}
+
+.bank-card-primary .bank-balance-highlight dd {
+    color: #bbf7d0;
+}
+
+.bank-card-muted .bank-balance-row dd {
+    color: #059669;
+}
+
+.banking-panel-actions {
+    border-top: 1px solid rgba(148, 163, 184, 0.35);
+}
+
+@media (max-width: 480px) {
+    .bank-dl > div {
+        grid-template-columns: 5.25rem 1fr;
+        gap: 6px;
+    }
+}
+
+@media (prefers-color-scheme: dark) {
+    .banking-panel-title {
+        background: linear-gradient(135deg, #3b82f6 0%, #2563eb 50%, #1e3a8a 100%);
+    }
+
+    .bank-card-muted {
+        background: rgba(15, 23, 42, 0.82);
+        color: var(--text);
+        border-color: rgba(148, 163, 184, 0.25);
+    }
+
+    .bank-card-muted .bank-balance-row dd {
+        color: #34d399;
+    }
+
+    .banking-panel-actions {
+        border-top-color: rgba(51, 65, 85, 0.8);
+    }
+}

